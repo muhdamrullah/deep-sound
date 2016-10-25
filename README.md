@@ -10,6 +10,10 @@ $ sudo pip install gTTS
 Insert the keys for the 'Google' service
 
 ```
-$ python listen_to_my_request.py
+$ nano listen_to_my_request.py
 ```
-Ensure that your microphone is plugged in
+Ensure that your microphone is plugged in and run the Python Flask
+
+```
+$ python app.py
+```
