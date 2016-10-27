@@ -12,8 +12,18 @@ Insert the keys for the 'Google' service
 ```
 $ nano listen_to_my_request.py
 ```
-Ensure that your microphone is plugged in and run the Python Flask
+A. Ensure that your microphone is plugged in and run the Python Flask
 
 ```
 $ python app.py
+```
+B. To retrieve abnormal detection, run alert.py in another terminal
+
+```
+$ python alert.py
+```
+C. B. To retrieve welcome detection, run geolocation.py in another terminal
+
+```
+$ python geolocation.py
 ```
