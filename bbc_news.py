@@ -26,15 +26,20 @@ def main():
         introduction = soup.find("p", {"class": "story-body__introduction"}).text  # Find the intro for the story.
         print("Title: {} \nURL: http://www.bbc.co.uk{}\nIntroduction: {}\n".format(story, stories[story], introduction))
 	
-	top_news = 'Here is one thing happening around the world. %s. Here is the summary. %s' % (story, introduction)
-        command = 'gtts-cli.py "%s" -l "en" -o news.mp3 && play news.mp3' % top_news
-        subprocess.call(command, shell=True)
-        time.sleep(1800)
+	top_news_raw = 'Here is one thing happening around the world. %s. Here is the summary. %s' % (story, introduction)
+	top_news = top_news_raw.replace('"',' ')
+	print top_news
+	# Checks if the room is empty or not through darknet
+	with open('../../Pictures/darknet/meeting.csv', 'r+') as f:
+            text = f.read()
+	    if 'Meeting is off' in text:		
+        	command = 'gtts-cli.py "%s" -l "en" -o news.mp3 && play news.mp3' % top_news
+        	subprocess.call(command, shell=True)
+		f.truncate()
+	    else:
+		pass
+		f.truncate()
+        time.sleep(600)
 
 if __name__ == "__main__":
-    try:
-        while True:
-            main()
-	    time.sleep(43200)
-    except AttributeError:
-        main()
+    while True:
